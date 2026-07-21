@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar de IA para Gestão de Produto</title>
+<style>
+  :root{
+    --bg:#0f1117;
+    --panel:#171a24;
+    --panel2:#1d212c;
+    --text:#e8eaf0;
+    --muted:#9aa1b2;
+    --line:#2a2f3d;
+    --q1:#4f8cff; /* Ferramentas & Lançamentos */
+    --q2:#ff9f4f; /* Negócios & Mercado */
+    --q3:#3ecf8e; /* Pesquisas & Dados */
+    --q4:#b98cff; /* Tendências & Futuro do Papel */
+    --r1:#2dd4bf; /* Receita Federal & Órgãos Públicos */
+    --r2:#6c7bff; /* Ferramentas & Infraestrutura */
+    --r3:#f5b942; /* Mercado & Adoção */
+    --r4:#ff6b81; /* Riscos & Análise Jurídica */
+  }
+  .section-divider{margin-top:64px;padding-top:36px;border-top:1px solid var(--line);}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 24px 80px;}
+  header{margin-bottom:36px;}
+  .kicker{color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+  h1{font-size:32px;margin:0 0 10px;font-weight:700;}
+  .lead{color:var(--muted);font-size:15.5px;max-width:760px;margin:0 0 4px;}
+  .meta-line{color:var(--muted);font-size:13px;margin-top:14px;}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;}
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none;}
+  .layout{display:grid;grid-template-columns:640px 1fr;gap:36px;align-items:start;}
+  @media (max-width:980px){.layout{grid-template-columns:1fr;} .radar-card{justify-self:center;}}
+  .radar-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;}
+  .radar-card h2{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px;font-weight:600;}
+  svg{display:block;width:100%;height:auto;}
+  .ring-label{fill:var(--muted);font-size:11px;}
+  .quad-label{fill:var(--muted);font-size:12px;font-weight:600;}
+  .blip circle{stroke:#0f1117;stroke-width:2;cursor:pointer;transition:r .15s ease;}
+  .blip:hover circle{filter:brightness(1.2);}
+  .blip text{fill:#0f1117;font-size:11px;font-weight:700;text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+  .side-note{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:13.5px;color:var(--muted);}
+  .side-note strong{color:var(--text);}
+  section.groups{margin-top:56px;}
+  .group{margin-bottom:38px;}
+  .group-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .group-head .dot{width:14px;height:14px;}
+  .group-head h3{font-size:19px;margin:0;font-weight:700;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--card-color,var(--q1));border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:24px;}
+  .card .badge-row{display:flex;align-items:center;justify-content:space-between;}
+  .card .num{font-size:12px;color:var(--muted);font-weight:700;}
+  .card .impact{font-size:10.5px;padding:3px 8px;border-radius:20px;border:1px solid var(--line);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .card h4{margin:0;font-size:15.5px;line-height:1.35;font-weight:700;}
+  .card .meta{font-size:12.5px;color:var(--muted);}
+  .card p{margin:0;font-size:13.5px;color:#c4c8d4;}
+  .card a.src{margin-top:auto;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+  .card a.src:hover{text-decoration:underline;}
+  footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12.5px;}
+  footer a{color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Radar semanal · Product Management</div>
+    <h1>Radar de IA para Gestão de Produto</h1>
+    <p class="lead">Curadoria de manchetes e relatórios reais sobre o uso e o impacto da IA no trabalho de PMs — lançamentos de ferramentas, movimentos de mercado e pesquisas do setor.</p>
+    <p class="meta-line">Curadoria realizada em 21 de julho de 2026, com busca na web. Cada item traz a fonte original e a data de publicação — clique nos links para verificar.</p>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot" style="background:var(--q1)"></span>Ferramentas &amp; Lançamentos</span>
+      <span class="legend-item"><span class="dot" style="background:var(--q2)"></span>Negócios &amp; Mercado</span>
+      <span class="legend-item"><span class="dot" style="background:var(--q3)"></span>Pesquisas &amp; Dados</span>
+      <span class="legend-item"><span class="dot" style="background:var(--q4)"></span>Tendências &amp; Futuro do Papel</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="radar-card">
+      <h2>Visão do radar</h2>
+      <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+        <!-- quadrant tints -->
+        <path d="M320,320 L320,90 A230,230 0 0 1 550,320 Z" fill="var(--q1)" opacity="0.08"/>
+        <path d="M320,320 L550,320 A230,230 0 0 1 320,550 Z" fill="var(--q2)" opacity="0.08"/>
+        <path d="M320,320 L320,550 A230,230 0 0 1 90,320 Z" fill="var(--q3)" opacity="0.08"/>
+        <path d="M320,320 L90,320 A230,230 0 0 1 320,90 Z" fill="var(--q4)" opacity="0.08"/>
+
+        <!-- rings -->
+        <circle cx="320" cy="320" r="90" fill="none" stroke="#333a4a" stroke-width="1"/>
+        <circle cx="320" cy="320" r="160" fill="none" stroke="#333a4a" stroke-width="1"/>
+        <circle cx="320" cy="320" r="230" fill="none" stroke="#333a4a" stroke-width="1"/>
+
+        <!-- axes -->
+        <line x1="320" y1="90" x2="320" y2="550" stroke="#333a4a" stroke-width="1"/>
+        <line x1="90" y1="320" x2="550" y2="320" stroke="#333a4a" stroke-width="1"/>
+
+        <!-- ring labels -->
+        <text x="326" y="234" class="ring-label">Alto impacto</text>
+        <text x="326" y="164" class="ring-label">Impacto moderado</text>
+        <text x="326" y="94" class="ring-label">Vale monitorar</text>
+
+        <!-- quadrant labels -->
+        <text x="545" y="105" class="quad-label" text-anchor="end" fill="var(--q1)">Ferramentas &amp; Lançamentos</text>
+        <text x="545" y="545" class="quad-label" text-anchor="end" fill="var(--q2)">Negócios &amp; Mercado</text>
+        <text x="95" y="545" class="quad-label" fill="var(--q3)">Pesquisas &amp; Dados</text>
+        <text x="95" y="105" class="quad-label" fill="var(--q4)">Tendências &amp; Futuro do Papel</text>
+
+        <!-- blips: Ferramentas & Lançamentos (q1) -->
+        <a href="#card-1"><g class="blip"><circle cx="380" cy="255" r="15" fill="var(--q1)"/><text x="380" y="259">1</text></g></a>
+        <a href="#card-2"><g class="blip"><circle cx="460" cy="235" r="15" fill="var(--q1)"/><text x="460" y="239">2</text></g></a>
+        <a href="#card-3"><g class="blip"><circle cx="400" cy="180" r="15" fill="var(--q1)"/><text x="400" y="184">3</text></g></a>
+        <a href="#card-4"><g class="blip"><circle cx="510" cy="190" r="15" fill="var(--q1)"/><text x="510" y="194">4</text></g></a>
+
+        <!-- blips: Negócios & Mercado (q2) -->
+        <a href="#card-5"><g class="blip"><circle cx="390" cy="375" r="15" fill="var(--q2)"/><text x="390" y="379">5</text></g></a>
+        <a href="#card-6"><g class="blip"><circle cx="440" cy="425" r="15" fill="var(--q2)"/><text x="440" y="429">6</text></g></a>
+
+        <!-- blips: Pesquisas & Dados (q3) -->
+        <a href="#card-7"><g class="blip"><circle cx="265" cy="390" r="15" fill="var(--q3)"/><text x="265" y="394">7</text></g></a>
+        <a href="#card-8"><g class="blip"><circle cx="210" cy="435" r="15" fill="var(--q3)"/><text x="210" y="439">8</text></g></a>
+        <a href="#card-9"><g class="blip"><circle cx="180" cy="400" r="15" fill="var(--q3)"/><text x="180" y="404">9</text></g></a>
+        <a href="#card-10"><g class="blip"><circle cx="130" cy="450" r="15" fill="var(--q3)"/><text x="130" y="454">10</text></g></a>
+
+        <!-- blips: Tendências & Futuro do Papel (q4) -->
+        <a href="#card-11"><g class="blip"><circle cx="255" cy="260" r="15" fill="var(--q4)"/><text x="255" y="264">11</text></g></a>
+        <a href="#card-12"><g class="blip"><circle cx="190" cy="225" r="15" fill="var(--q4)"/><text x="190" y="229">12</text></g></a>
+      </svg>
+    </div>
+
+    <div class="side-note">
+      <strong>Como ler este radar:</strong> cada item foi posicionado por categoria (quadrante) e por relevância imediata para quem trabalha com produto (anel — quanto mais perto do centro, maior o impacto agora). Clique em um número para ir direto ao card correspondente, com a manchete, a fonte e o link original. Nenhum item foi inventado: todos vêm de veículos, blogs oficiais de empresas ou relatórios de pesquisa publicados, com data verificável.
+    </div>
+  </div>
+
+  <section class="groups">
+
+    <div class="group">
+      <div class="group-head"><span class="dot" style="background:var(--q1)"></span><h3>Ferramentas &amp; Lançamentos</h3></div>
+      <div class="cards">
+
+        <div class="card" id="card-1" style="--card-color:var(--q1)">
+          <div class="badge-row"><span class="num">01</span><span class="impact">Alto impacto</span></div>
+          <h4>Productboard Spark sai do beta e chega à disponibilidade geral</h4>
+          <div class="meta">Productboard (blog oficial) · 10 jul 2026</div>
+          <p>O "sistema de produto agentivo" da Productboard — que sugere oportunidades, redige specs e acompanha se o que foi lançado gerou impacto — passou do beta público (aberto em jan/2026) para disponibilidade geral a todos os clientes.</p>
+          <a class="src" href="https://www.productboard.com/blog/introducing-spark-agentic-product-system/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-2" style="--card-color:var(--q1)">
+          <div class="badge-row"><span class="num">02</span><span class="impact">Impacto moderado</span></div>
+          <h4>Atlassian leva agentes de terceiros (Lovable, Replit, Gamma) para dentro do Confluence via MCP</h4>
+          <div class="meta">TechCrunch · 8 abr 2026</div>
+          <p>A Atlassian lançou o Remix (ferramenta visual em open beta) e três agentes de terceiros conectados via Model Context Protocol dentro do Confluence: um que vira ideias em prototypes com o Lovable, outro que transforma docs técnicos em apps com o Replit, e um terceiro com o Gamma para apresentações.</p>
+          <a class="src" href="https://techcrunch.com/2026/04/08/atlassian-confluence-visual-ai-tools-agents/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-3" style="--card-color:var(--q1)">
+          <div class="badge-row"><span class="num">03</span><span class="impact">Impacto moderado</span></div>
+          <h4>Aha! Builder vira disponível para todos os clientes</h4>
+          <div class="meta">Aha! (blog oficial) · 29 abr 2026</div>
+          <p>Depois de um período em acesso antecipado, o Aha! Builder — ferramenta de IA para PMs construírem protótipos, PoCs e aplicações internas ou voltadas ao cliente sem depender de engenharia — ficou disponível para toda a base de clientes.</p>
+          <a class="src" href="https://www.aha.io/blog/aha-builder-is-now-available-create-prototypes-and-business-applications-with-ai" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-4" style="--card-color:var(--q1)">
+          <div class="badge-row"><span class="num">04</span><span class="impact">Vale monitorar</span></div>
+          <h4>PTC anuncia onda de inovações com 12 novos agentes de IA no ciclo de vida do produto</h4>
+          <div class="meta">PTC.com (release oficial) · 9–10 jun 2026, PTC NEXT Chicago</div>
+          <p>A PTC apresentou o PTC Orbit — plataforma de IA que unifica dados de PLM, ERP, CRM, IoT e EAM — além de 12 novos agentes de IA e melhorias em Onshape, Windchill e Arena. Mais focado em manufatura/PLM, mas relevante para PMs de produtos físicos e industriais.</p>
+          <a class="src" href="https://www.ptc.com/en/news/2026/ptc-unveils-a-wave-of-product-innovations" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="dot" style="background:var(--q2)"></span><h3>Negócios &amp; Mercado</h3></div>
+      <div class="cards">
+
+        <div class="card" id="card-5" style="--card-color:var(--q2)">
+          <div class="badge-row"><span class="num">05</span><span class="impact">Alto impacto</span></div>
+          <h4>Granola vira unicórnio com Series C de US$ 125M e deixa de ser só um "bloco de notas de IA"</h4>
+          <div class="meta">TechCrunch · 25 mar 2026</div>
+          <p>Rodada liderada por Index Ventures (com Kleiner Perkins, Lightspeed e Spark Capital) avalia a Granola em US$ 1,5 bi. A empresa está migrando de anotador de reuniões para "camada de contexto corporativo de IA", com integrações via MCP para Claude, ChatGPT e outras ferramentas — muito usada por PMs para sintetizar reuniões e entrevistas com clientes.</p>
+          <a class="src" href="https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-6" style="--card-color:var(--q2)">
+          <div class="badge-row"><span class="num">06</span><span class="impact">Impacto moderado</span></div>
+          <h4>Pendo nomeia seu primeiro Chief AI Officer para liderar produtos agentivos</h4>
+          <div class="meta">PR Newswire · 21 mai 2026</div>
+          <p>Zain Lakhani assume como primeiro CAIO da Pendo, sinalizando aposta pesada em agentes de IA. O movimento acompanha o lançamento do Pendo Agent no Google Marketplace e parcerias para levar contexto de produto a agentes como o Fin, da Intercom, além de Planview e Atlassian.</p>
+          <a class="src" href="https://www.prnewswire.com/news-releases/pendo-appoints-zain-lakhani-as-first-chief-ai-officer-to-lead-agentic-ai-product-development-302779123.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="dot" style="background:var(--q3)"></span><h3>Pesquisas &amp; Dados</h3></div>
+      <div class="cards">
+
+        <div class="card" id="card-7" style="--card-color:var(--q3)">
+          <div class="badge-row"><span class="num">07</span><span class="impact">Alto impacto</span></div>
+          <h4>Atlassian "State of Product 2026": 77% dos times sentem ganho de produtividade com IA, mas 84% temem que seus produtos fracassem</h4>
+          <div class="meta">Atlassian (blog oficial) · 2026 · +1.000 profissionais de produto (EUA/Europa)</div>
+          <p>Primeiro relatório anual da Atlassian sobre o estado do produto. Além do dado de produtividade e do "medo de fracasso", aponta que 80% dos times ainda não envolvem engenharia na ideação e que só 12% acham gratificante a pressão por "lucro acima de tudo".</p>
+          <a class="src" href="https://www.atlassian.com/blog/announcements/state-of-product-2026" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-8" style="--card-color:var(--q3)">
+          <div class="badge-row"><span class="num">08</span><span class="impact">Impacto moderado</span></div>
+          <h4>"State of Product Management Report 2026": mais da metade das empresas hesita em ampliar o uso de IA</h4>
+          <div class="meta">ProductPlan / Product-Led Alliance · 2026 · ~250 profissionais, pesquisa no Q4 2025</div>
+          <p>O relatório aponta que a hesitação em expandir IA tem pouco a ver com utilidade percebida, e mapeia quais casos de uso (ainda sem incluir apoio à decisão estratégica) já entregam valor mensurável aos times de produto.</p>
+          <a class="src" href="https://www.productplan.com/ebooks/the-state-of-product-management-report-2026" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-9" style="--card-color:var(--q3)">
+          <div class="badge-row"><span class="num">09</span><span class="impact">Impacto moderado</span></div>
+          <h4>"2026 State of Product Survey": como CIOs, CTOs e líderes de produto estão adotando IA generativa e agentiva</h4>
+          <div class="meta">Deloitte · 2026</div>
+          <p>Pesquisa da Deloitte sobre como organizações estão saindo da fase de ambição para resultados concretos com IA generativa e agentiva na entrega de produto.</p>
+          <a class="src" href="https://www.deloitte.com/us/en/services/consulting/articles/state-of-product-survey.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-10" style="--card-color:var(--q3)">
+          <div class="badge-row"><span class="num">10</span><span class="impact">Vale monitorar</span></div>
+          <h4>"The New Reality of AI in Product Management": 94% dos profissionais de produto usam IA todo dia ou com frequência</h4>
+          <div class="meta">Productboard (blog oficial) · 22 out 2025</div>
+          <p>Levantamento anterior da própria Productboard mostra que zero respondentes disseram não usar IA — quase a metade descreve o uso como "profundamente incorporado" ao fluxo de trabalho. Ainda citado como referência em análises publicadas em 2026.</p>
+          <a class="src" href="https://www.productboard.com/blog/ai-in-product-management-report/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="dot" style="background:var(--q4)"></span><h3>Tendências &amp; Futuro do Papel</h3></div>
+      <div class="cards">
+
+        <div class="card" id="card-11" style="--card-color:var(--q4)">
+          <div class="badge-row"><span class="num">11</span><span class="impact">Alto impacto</span></div>
+          <h4>Relatório prevê que o cargo de PM "como conhecemos hoje" pode desaparecer até 2030</h4>
+          <div class="meta">Products That Count &amp; Mighty Capital (via PR Newswire) · 27 mai 2026 · +1.500 líderes de produto</div>
+          <p>O "2026 CPO Insights Report" descreve a ascensão do "Product Builder" — híbrido de PM e engenharia, que cresceu 10x no último ano — enquanto vagas tradicionais de PM caíram 30% (e até 70% em empresas SaaS). Também aponta o surgimento do "Chief Product Investor", CPO que pensa como gestor de portfólio.</p>
+          <a class="src" href="https://www.prnewswire.com/news-releases/2026-cpo-insights-report-predicts-product-managers-will-disappear-by-2030-302782732.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+        <div class="card" id="card-12" style="--card-color:var(--q4)">
+          <div class="badge-row"><span class="num">12</span><span class="impact">Impacto moderado</span></div>
+          <h4>O que 638 profissionais revelam sobre a transformação do PM pela IA</h4>
+          <div class="meta">Medium — David Haberlah · mar 2026</div>
+          <p>Análise baseada em uma pesquisa com 638 profissionais de produto sobre como a IA está mudando rotina, habilidades exigidas e expectativas em torno do cargo — complementa o debate levantado pelo CPO Insights Report.</p>
+          <a class="src" href="https://medium.com/@haberlah/what-638-practitioner-voices-reveal-about-pms-ai-transformation-7d2fd16be10d" target="_blank" rel="noopener">Ler fonte original ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section-divider">
+    <header style="margin-bottom:36px;">
+      <div class="kicker">Radar temático · Reforma Tributária</div>
+      <h1 style="font-size:26px;">Reforma Tributária × IA</h1>
+      <p class="lead">Como o uso de inteligência artificial está convergindo com a Reforma Tributária do Consumo no Brasil (IBS, CBS, Imposto Seletivo, split payment) — do lado da Receita Federal, dos fornecedores de tecnologia fiscal e dos alertas de especialistas.</p>
+      <p class="meta-line">Curadoria realizada em 21 de julho de 2026, com busca na web. Itens de 2025 usados como contexto vêm com a data original mantida — nada foi reatualizado artificialmente.</p>
+
+      <div class="legend">
+        <span class="legend-item"><span class="dot" style="background:var(--r1)"></span>Receita Federal &amp; Órgãos Públicos</span>
+        <span class="legend-item"><span class="dot" style="background:var(--r2)"></span>Ferramentas &amp; Infraestrutura</span>
+        <span class="legend-item"><span class="dot" style="background:var(--r3)"></span>Mercado &amp; Adoção</span>
+        <span class="legend-item"><span class="dot" style="background:var(--r4)"></span>Riscos &amp; Análise Jurídica</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <div class="radar-card">
+        <h2>Visão do radar</h2>
+        <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+          <path d="M320,320 L320,90 A230,230 0 0 1 550,320 Z" fill="var(--r1)" opacity="0.08"/>
+          <path d="M320,320 L550,320 A230,230 0 0 1 320,550 Z" fill="var(--r2)" opacity="0.08"/>
+          <path d="M320,320 L320,550 A230,230 0 0 1 90,320 Z" fill="var(--r3)" opacity="0.08"/>
+          <path d="M320,320 L90,320 A230,230 0 0 1 320,90 Z" fill="var(--r4)" opacity="0.08"/>
+
+          <circle cx="320" cy="320" r="90" fill="none" stroke="#333a4a" stroke-width="1"/>
+          <circle cx="320" cy="320" r="160" fill="none" stroke="#333a4a" stroke-width="1"/>
+          <circle cx="320" cy="320" r="230" fill="none" stroke="#333a4a" stroke-width="1"/>
+
+          <line x1="320" y1="90" x2="320" y2="550" stroke="#333a4a" stroke-width="1"/>
+          <line x1="90" y1="320" x2="550" y2="320" stroke="#333a4a" stroke-width="1"/>
+
+          <text x="326" y="234" class="ring-label">Alto impacto</text>
+          <text x="326" y="164" class="ring-label">Impacto moderado</text>
+          <text x="326" y="94" class="ring-label">Vale monitorar</text>
+
+          <text x="545" y="105" class="quad-label" text-anchor="end" fill="var(--r1)">Receita Federal &amp; Órgãos Públicos</text>
+          <text x="545" y="545" class="quad-label" text-anchor="end" fill="var(--r2)">Ferramentas &amp; Infraestrutura</text>
+          <text x="95" y="545" class="quad-label" fill="var(--r3)">Mercado &amp; Adoção</text>
+          <text x="95" y="105" class="quad-label" fill="var(--r4)">Riscos &amp; Análise Jurídica</text>
+
+          <a href="#card-13"><g class="blip"><circle cx="390" cy="265" r="15" fill="var(--r1)"/><text x="390" y="269">13</text></g></a>
+          <a href="#card-14"><g class="blip"><circle cx="360" cy="240" r="15" fill="var(--r1)"/><text x="360" y="244">14</text></g></a>
+          <a href="#card-15"><g class="blip"><circle cx="405" cy="290" r="15" fill="var(--r1)"/><text x="405" y="294">15</text></g></a>
+
+          <a href="#card-16"><g class="blip"><circle cx="460" cy="405" r="15" fill="var(--r2)"/><text x="460" y="409">16</text></g></a>
+          <a href="#card-17"><g class="blip"><circle cx="410" cy="455" r="15" fill="var(--r2)"/><text x="410" y="459">17</text></g></a>
+          <a href="#card-18"><g class="blip"><circle cx="510" cy="450" r="15" fill="var(--r2)"/><text x="510" y="454">18</text></g></a>
+
+          <a href="#card-19"><g class="blip"><circle cx="180" cy="405" r="15" fill="var(--r3)"/><text x="180" y="409">19</text></g></a>
+
+          <a href="#card-20"><g class="blip"><circle cx="255" cy="260" r="15" fill="var(--r4)"/><text x="255" y="264">20</text></g></a>
+          <a href="#card-21"><g class="blip"><circle cx="180" cy="235" r="15" fill="var(--r4)"/><text x="180" y="239">21</text></g></a>
+        </svg>
+      </div>
+
+      <div class="side-note">
+        <strong>Contexto:</strong> a Reforma Tributária do Consumo (EC 132/2023, LC 214/2025) substitui PIS, Cofins, ICMS, ISS e IPI por IBS e CBS ao longo de uma transição até 2033. 2026 é o primeiro ano de convivência entre os sistemas, com alíquotas de teste e destaque obrigatório do IBS/CBS na nota fiscal — o que está forçando Receita Federal, ERPs e escritórios fiscais a investir pesado em IA para dar conta do volume de dados e regras. Todos os itens abaixo têm fonte e data reais — nenhum foi inventado.
+      </div>
+    </div>
+
+    <div class="groups" style="margin-top:56px;">
+
+      <div class="group">
+        <div class="group-head"><span class="dot" style="background:var(--r1)"></span><h3>Receita Federal &amp; Órgãos Públicos</h3></div>
+        <div class="cards">
+
+          <div class="card" id="card-13" style="--card-color:var(--r1)">
+            <div class="badge-row"><span class="num">13</span><span class="impact">Alto impacto</span></div>
+            <h4>Receita Federal publica sua Política de Inteligência Artificial (Portaria RFB nº 647/2026)</h4>
+            <div class="meta">gov.br/receitafederal (release oficial) · 5 fev 2026</div>
+            <p>A portaria define princípios, diretrizes e salvaguardas para uso de IA em fiscalização, arrecadação, análise de dados, atendimento ao contribuinte e gestão de risco — deixando explícito que a decisão administrativa final é sempre do servidor, e que dados fiscais de contribuintes não podem treinar modelos comerciais de terceiros.</p>
+            <a class="src" href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/fevereiro/receita-federal-publica-politica-de-inteligencia-artificial-com-foco-em-responsabilidade-transparencia-e-supervisao-humana" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+          <div class="card" id="card-14" style="--card-color:var(--r1)">
+            <div class="badge-row"><span class="num">14</span><span class="impact">Alto impacto</span></div>
+            <h4>Receita Federal lança o BotRTC, chatbot com IA generativa sobre a Reforma Tributária</h4>
+            <div class="meta">gov.br/receitafederal (release oficial) · 6 fev 2026</div>
+            <p>Assistente virtual dentro do Portal da Reforma Tributária, treinado com conteúdo institucional, para esclarecer dúvidas gerais sobre o novo modelo de consumo. A própria Receita ressalva: não acessa dados sigilosos do contribuinte, não orienta casos concretos e pode apresentar imprecisões por ser IA.</p>
+            <a class="src" href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/fevereiro/receita-federal-lanca-chatbot-com-ia-generativa-sobre-a-reforma-tributaria-para-o-publico-externo" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+          <div class="card" id="card-15" style="--card-color:var(--r1)">
+            <div class="badge-row"><span class="num">15</span><span class="impact">Alto impacto</span></div>
+            <h4>Receita Federal amplia fiscalização com IA e acelera o cruzamento de dados fiscais</h4>
+            <div class="meta">Cointelegraph Brasil · 7 jul 2026</div>
+            <p>Apoiada pela nova Política de IA, a Receita passou a cruzar milhões de registros em segundos, identificando automaticamente divergências entre o que o contribuinte declara e o que bancos, cartórios, instituições financeiras e emissores de nota fiscal informam — com supervisão humana mantida sobre qualquer autuação.</p>
+            <a class="src" href="https://cointelegraph.com.br/news/irs-expands-oversight-using-artificial-intelligence" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span class="dot" style="background:var(--r2)"></span><h3>Ferramentas &amp; Infraestrutura</h3></div>
+        <div class="cards">
+
+          <div class="card" id="card-16" style="--card-color:var(--r2)">
+            <div class="badge-row"><span class="num">16</span><span class="impact">Impacto moderado</span></div>
+            <h4>Receita Federal e Comitê Gestor do IBS publicam documentação técnica da Plataforma Pública do Split Payment</h4>
+            <div class="meta">gov.br/fazenda (release oficial) · Ato Conjunto RFB/CGIBS nº 2, 3 jun 2026</div>
+            <p>Manual de integração e especificação Swagger da plataforma que vai segregar e recolher IBS/CBS no momento da liquidação financeira — a base técnica sobre a qual ERPs, adquirentes e fintechs terão que construir (e, cada vez mais, automatizar com IA) suas integrações de split payment.</p>
+            <a class="src" href="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/junho/receita-federal-e-comite-gestor-do-ibs-publicam-documentacao-tecnica-da-plataforma-publica-do-split-payment" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+          <div class="card" id="card-17" style="--card-color:var(--r2)">
+            <div class="badge-row"><span class="num">17</span><span class="impact">Impacto moderado</span></div>
+            <h4>TOTVS amplia a "Inteligência Tributária (TIT)" para simular cenários de CBS, IBS e Imposto Seletivo</h4>
+            <div class="meta">TOTVS (blog/Espaço Legislação) · 2026</div>
+            <p>Ferramenta compara a carga tributária atual com a projeção pós-Reforma e simula cenários da transição 2026/2027 dentro do Protheus — um dos exemplos mais diretos de ERP nacional incorporando IA especificamente para o "de-para" fiscal exigido pela Reforma.</p>
+            <a class="src" href="https://espacolegislacao.totvs.com/protheus-reforma-tributaria/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+          <div class="card" id="card-18" style="--card-color:var(--r2)">
+            <div class="badge-row"><span class="num">18</span><span class="impact">Vale monitorar</span></div>
+            <h4>Startup V360 lança a "IA da Reforma", assistente gratuito para profissionais fiscais e contábeis</h4>
+            <div class="meta">Exame · jul 2025</div>
+            <p>Ferramenta em formato de chat, treinada com perguntas reais de analistas e coordenadores fiscais, para ajudar a entender os impactos práticos da Reforma. Um dos primeiros produtos de IA brasileiros construídos especificamente em torno do tema — item mais antigo deste radar, mantido pelo valor histórico.</p>
+            <a class="src" href="https://exame.com/inteligencia-artificial/ia-brasileira-quer-ajudar-empresas-na-adaptacao-a-reforma-tributaria-que-comeca-em-2026/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span class="dot" style="background:var(--r3)"></span><h3>Mercado &amp; Adoção</h3></div>
+        <div class="cards">
+
+          <div class="card" id="card-19" style="--card-color:var(--r3)">
+            <div class="badge-row"><span class="num">19</span><span class="impact">Impacto moderado</span></div>
+            <h4>Como preparar o compliance fiscal para IBS e CBS com apoio de IA</h4>
+            <div class="meta">O Agente Financeiro · 2026</div>
+            <p>Mapeia o desafio do "de-para" — converter, produto a produto e operação a operação, cada regra de PIS/Cofins e ICMS para a nova estrutura de IBS/CBS — e cita pesquisa da EY segundo a qual 45% das empresas já integram IA em alguma iniciativa, mas 68% dos executivos brasileiros admitem lacunas críticas de governança sobre como confiar na tecnologia.</p>
+            <a class="src" href="https://www.oagentefinanceiro.com.br/reforma-tributaria-ia-compliance-fiscal-ibs-cbs/" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><span class="dot" style="background:var(--r4)"></span><h3>Riscos &amp; Análise Jurídica</h3></div>
+        <div class="cards">
+
+          <div class="card" id="card-20" style="--card-color:var(--r4)">
+            <div class="badge-row"><span class="num">20</span><span class="impact">Alto impacto</span></div>
+            <h4>Reforma tributária e a era da IA: os riscos da fiscalização algorítmica</h4>
+            <div class="meta">Migalhas · 16 set 2025</div>
+            <p>Artigo jurídico (Karina de Oliveira) mostra a Receita já usando plataformas de IA para detectar fraudes tributárias e aduaneiras, mas alerta que autuações baseadas em algoritmo podem colidir com devido processo, contraditório e ampla defesa — defendendo transparência algorítmica e revisão humana como salvaguardas.</p>
+            <a class="src" href="https://www.migalhas.com.br/depeso/440070/reforma-tributaria-e-ia-riscos-da-fiscalizacao-algoritmica" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+          <div class="card" id="card-21" style="--card-color:var(--r4)">
+            <div class="badge-row"><span class="num">21</span><span class="impact">Impacto moderado</span></div>
+            <h4>IA na Reforma Tributária exige fontes oficiais e validação das informações</h4>
+            <div class="meta">Portal UAI / Estado de Minas (via Dino) · 29 jun 2026</div>
+            <p>Especialista defende que respostas de IA sobre temas fiscais só têm valor se rastreáveis a fonte oficial, data, URL e trecho citado — cita ainda pesquisa global da McKinsey em que 88% das organizações já relatam uso regular de IA em ao menos uma função de negócio, mas muitas ainda em fase de piloto.</p>
+            <a class="src" href="https://www.uai.com.br/app/noticia/mundo-corporativo/2026/06/29/noticia-mundo-corporativo,385859/ia-na-reforma-tributaria-exige-fontes-oficiais.shtml" target="_blank" rel="noopener">Ler fonte original ↗</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    Curadoria feita por busca na web em 21 de julho de 2026. Todos os itens acima referenciam fontes verificáveis (imprensa especializada, releases oficiais de empresas e relatórios de pesquisa do setor) — nenhuma manchete foi gerada artificialmente. Datas indicadas quando confirmadas nas próprias fontes; alguns relatórios não divulgam dia exato de publicação, apenas o ano/trimestre. Como o cenário de IA muda rápido, vale reabrir este radar periodicamente e refazer a curadoria.
+  </footer>
+
+</div>
+</body>
+</html>
