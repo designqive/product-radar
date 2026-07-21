@@ -64,8 +64,13 @@
   .card h4{margin:0;font-size:15.5px;line-height:1.35;font-weight:700;}
   .card .meta{font-size:12.5px;color:var(--muted);}
   .card p{margin:0;font-size:13.5px;color:#c4c8d4;}
-  .qive-impact{margin:2px 0 0;padding:9px 11px;background:rgba(255,255,255,0.05);border-left:3px solid var(--card-color,var(--q1));border-radius:6px;font-size:12.5px;color:#c4c8d4;}
-  .qive-impact strong{color:#ffcf5c;font-weight:700;}
+  .qive-impact{margin:2px 0 0;padding:10px 11px;background:rgba(255,255,255,0.05);border-left:3px solid var(--card-color,var(--q1));border-radius:6px;display:flex;flex-direction:column;gap:5px;}
+  .qive-impact-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#ffcf5c;font-weight:700;}
+  .qive-row{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;color:#c4c8d4;line-height:1.4;}
+  .qive-tag{flex:none;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;margin-top:1px;}
+  .qive-tag-produto{background:rgba(79,140,255,0.2);color:#9dbfff;}
+  .qive-tag-marketing{background:rgba(255,159,79,0.2);color:#ffc599;}
+  .qive-tag-vendas{background:rgba(62,207,142,0.2);color:#8fe6bc;}
   .card a.src{margin-top:auto;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
   .card a.src:hover{text-decoration:underline;}
   footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12.5px;}
@@ -157,7 +162,7 @@
           <h4>Productboard Spark sai do beta e chega à disponibilidade geral</h4>
           <div class="meta">Productboard (blog oficial) · 10 jul 2026</div>
           <p>O "sistema de produto agentivo" da Productboard — que sugere oportunidades, redige specs e acompanha se o que foi lançado gerou impacto — passou do beta público (aberto em jan/2026) para disponibilidade geral a todos os clientes.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Vale testar no fluxo de descoberta/PRDs da própria squad de produto — é exatamente o tipo de agente que compete com o que um PM da Qive faria manualmente hoje.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Vale testar no fluxo de descoberta/PRDs da própria squad — mede o quanto um agente autônomo substitui trabalho manual de PM.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Relevância direta baixa: é ferramenta interna de produto, não vira campanha — mas o padrão de "agente atuando em cada etapa" pode inspirar automação de conteúdo.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa — é ferramenta de bastidor de produto, sem gancho natural para conversa com cliente.</div></div>
           <a class="src" href="https://www.productboard.com/blog/introducing-spark-agentic-product-system/" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -166,7 +171,7 @@
           <h4>Atlassian leva agentes de terceiros (Lovable, Replit, Gamma) para dentro do Confluence via MCP</h4>
           <div class="meta">TechCrunch · 8 abr 2026</div>
           <p>A Atlassian lançou o Remix (ferramenta visual em open beta) e três agentes de terceiros conectados via Model Context Protocol dentro do Confluence: um que vira ideias em prototypes com o Lovable, outro que transforma docs técnicos em apps com o Replit, e um terceiro com o Gamma para apresentações.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> A Qive já integra com ERPs via API/parcerias — MCP virando padrão para agentes de terceiros é um sinal de para onde esse tipo de integração está indo, vale acompanhar mesmo sem uso imediato.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>MCP virando padrão de integração de agentes é algo a considerar em futuras integrações da Qive com ERPs/parceiros.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Se a documentação interna vive no Confluence, os novos agentes de geração visual (Gamma) podem acelerar peças de posicionamento.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa — é ferramenta de colaboração interna, não aparece em pitch de vendas.</div></div>
           <a class="src" href="https://techcrunch.com/2026/04/08/atlassian-confluence-visual-ai-tools-agents/" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -175,7 +180,7 @@
           <h4>Aha! Builder vira disponível para todos os clientes</h4>
           <div class="meta">Aha! (blog oficial) · 29 abr 2026</div>
           <p>Depois de um período em acesso antecipado, o Aha! Builder — ferramenta de IA para PMs construírem protótipos, PoCs e aplicações internas ou voltadas ao cliente sem depender de engenharia — ficou disponível para toda a base de clientes.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Referência de "builder" para prototipar rápido sem depender 100% de engenharia — pode acelerar validação de ideias antes de entrar no backlog de dev.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Referência de "builder" para prototipar sem depender de engenharia — acelera validar conceito antes do backlog.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Prototipagem rápida também serve para mockups/demos de campanha sem esperar a fila de design.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Pode ajudar a montar demos personalizadas para prospects mais rápido, sem depender de produto/engenharia.</div></div>
           <a class="src" href="https://www.aha.io/blog/aha-builder-is-now-available-create-prototypes-and-business-applications-with-ai" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -184,7 +189,7 @@
           <h4>PTC anuncia onda de inovações com 12 novos agentes de IA no ciclo de vida do produto</h4>
           <div class="meta">PTC.com (release oficial) · 9–10 jun 2026, PTC NEXT Chicago</div>
           <p>A PTC apresentou o PTC Orbit — plataforma de IA que unifica dados de PLM, ERP, CRM, IoT e EAM — além de 12 novos agentes de IA e melhorias em Onshape, Windchill e Arena. Mais focado em manufatura/PLM, mas relevante para PMs de produtos físicos e industriais.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Foco em manufatura/PLM, então o impacto direto é baixo — mas é outro ERP investindo pesado em agentes de IA, bom para calibrar o ritmo do mercado.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Foco em manufatura/PLM: impacto direto baixo, mas serve de benchmark de ritmo de investimento em agentes por outro ERP.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Sem gancho direto — o público de manufatura/PLM não é o ICP da Qive.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Sem gancho direto, pelo mesmo motivo.</div></div>
           <a class="src" href="https://www.ptc.com/en/news/2026/ptc-unveils-a-wave-of-product-innovations" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -200,7 +205,7 @@
           <h4>Granola vira unicórnio com Series C de US$ 125M e deixa de ser só um "bloco de notas de IA"</h4>
           <div class="meta">TechCrunch · 25 mar 2026</div>
           <p>Rodada liderada por Index Ventures (com Kleiner Perkins, Lightspeed e Spark Capital) avalia a Granola em US$ 1,5 bi. A empresa está migrando de anotador de reuniões para "camada de contexto corporativo de IA", com integrações via MCP para Claude, ChatGPT e outras ferramentas — muito usada por PMs para sintetizar reuniões e entrevistas com clientes.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Se o time usa Granola (ou similar) em calls de discovery com clientes, a expansão para "contexto corporativo" pode valer a pena avaliar para centralizar aprendizados de pesquisa.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Se o time usa Granola (ou similar) em discovery, a expansão para "contexto corporativo" ajuda a centralizar aprendizados de pesquisa com cliente.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Ferramenta de notas de reunião com IA pode capturar insights de entrevista que alimentam cases e conteúdo.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Times de vendas usam esse tipo de ferramenta para registrar calls — a expansão para "contexto corporativo" pode interessar para automatizar follow-up/CRM.</div></div>
           <a class="src" href="https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -209,7 +214,7 @@
           <h4>Pendo nomeia seu primeiro Chief AI Officer para liderar produtos agentivos</h4>
           <div class="meta">PR Newswire · 21 mai 2026</div>
           <p>Zain Lakhani assume como primeiro CAIO da Pendo, sinalizando aposta pesada em agentes de IA. O movimento acompanha o lançamento do Pendo Agent no Google Marketplace e parcerias para levar contexto de produto a agentes como o Fin, da Intercom, além de Planview e Atlassian.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Pendo é ferramenta de product analytics/in-app guidance — um Chief AI Officer ali sinaliza para onde a categoria de analytics de produto está indo, categoria adjacente ao que a Qive também mede no próprio produto.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Pendo é analytics/in-app guidance — sinaliza para onde a categoria de product analytics está indo, adjacente ao que a Qive mede no próprio produto.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>In-app guidance também é usado por marketing de produto (onboarding, anúncio de feature) — vale ver se cabe no mix de ferramentas.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa — é ferramenta de produto/growth, não de vendas.</div></div>
           <a class="src" href="https://www.prnewswire.com/news-releases/pendo-appoints-zain-lakhani-as-first-chief-ai-officer-to-lead-agentic-ai-product-development-302779123.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -225,7 +230,7 @@
           <h4>Atlassian "State of Product 2026": 77% dos times sentem ganho de produtividade com IA, mas 84% temem que seus produtos fracassem</h4>
           <div class="meta">Atlassian (blog oficial) · 2026 · +1.000 profissionais de produto (EUA/Europa)</div>
           <p>Primeiro relatório anual da Atlassian sobre o estado do produto. Além do dado de produtividade e do "medo de fracasso", aponta que 80% dos times ainda não envolvem engenharia na ideação e que só 12% acham gratificante a pressão por "lucro acima de tudo".</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Dá pra usar como benchmark direto em conversas internas: como o time de produto da Qive se compara em ganho de produtividade com IA e em colaboração com engenharia?</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Benchmark direto: como o time de produto da Qive se compara em produtividade com IA e colaboração com engenharia?</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>O dado de "84% temem que o produto fracasse" é bom gancho para conteúdo sobre gestão de risco em produto.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa — é pesquisa sobre a função de produto, não sobre o produto fiscal da Qive.</div></div>
           <a class="src" href="https://www.atlassian.com/blog/announcements/state-of-product-2026" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -234,7 +239,7 @@
           <h4>"State of Product Management Report 2026": mais da metade das empresas hesita em ampliar o uso de IA</h4>
           <div class="meta">ProductPlan / Product-Led Alliance · 2026 · ~250 profissionais, pesquisa no Q4 2025</div>
           <p>O relatório aponta que a hesitação em expandir IA tem pouco a ver com utilidade percebida, e mapeia quais casos de uso (ainda sem incluir apoio à decisão estratégica) já entregam valor mensurável aos times de produto.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Dado de mercado útil para justificar (ou questionar) o ritmo de investimento em IA no roadmap de produto.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Dado de mercado útil para justificar (ou questionar) o ritmo de investimento em IA no roadmap.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Pode embasar conteúdo institucional sobre maturidade de IA no mercado de produto.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa.</div></div>
           <a class="src" href="https://www.productplan.com/ebooks/the-state-of-product-management-report-2026" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -243,7 +248,7 @@
           <h4>"2026 State of Product Survey": como CIOs, CTOs e líderes de produto estão adotando IA generativa e agentiva</h4>
           <div class="meta">Deloitte · 2026</div>
           <p>Pesquisa da Deloitte sobre como organizações estão saindo da fase de ambição para resultados concretos com IA generativa e agentiva na entrega de produto.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Mais um ponto de comparação de maturidade de IA para conversas com liderança sobre onde a Qive está na curva de adoção.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Mais um ponto de comparação de maturidade de IA para conversa com liderança.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Fonte citável em conteúdo de thought leadership sobre adoção de IA corporativa.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa.</div></div>
           <a class="src" href="https://www.deloitte.com/us/en/services/consulting/articles/state-of-product-survey.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -252,7 +257,7 @@
           <h4>"The New Reality of AI in Product Management": 94% dos profissionais de produto usam IA todo dia ou com frequência</h4>
           <div class="meta">Productboard (blog oficial) · 22 out 2025</div>
           <p>Levantamento anterior da própria Productboard mostra que zero respondentes disseram não usar IA — quase a metade descreve o uso como "profundamente incorporado" ao fluxo de trabalho. Ainda citado como referência em análises publicadas em 2026.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Referência de benchmark para adoção diária de IA dentro do time de produto — vale comparar com a realidade interna.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Referência de benchmark para adoção diária de IA dentro do time de produto.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Estatística citável ("94% usam IA") em conteúdo sobre adoção de IA no mercado.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa.</div></div>
           <a class="src" href="https://www.productboard.com/blog/ai-in-product-management-report/" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -268,7 +273,7 @@
           <h4>Relatório prevê que o cargo de PM "como conhecemos hoje" pode desaparecer até 2030</h4>
           <div class="meta">Products That Count &amp; Mighty Capital (via PR Newswire) · 27 mai 2026 · +1.500 líderes de produto</div>
           <p>O "2026 CPO Insights Report" descreve a ascensão do "Product Builder" — híbrido de PM e engenharia, que cresceu 10x no último ano — enquanto vagas tradicionais de PM caíram 30% (e até 70% em empresas SaaS). Também aponta o surgimento do "Chief Product Investor", CPO que pensa como gestor de portfólio.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Vale refletir sobre como a estrutura do time de produto da Qive deve evoluir se a tendência de "Product Builder" se confirmar por aqui também.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Vale refletir sobre como a estrutura do time de produto da Qive deve evoluir se a tendência de "Product Builder" se confirmar por aqui também.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Tema forte para conteúdo de marca empregadora / thought leadership sobre o futuro do trabalho em produto.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa, mas dá contexto para conversas com clientes sobre eficiência operacional dos próprios times deles.</div></div>
           <a class="src" href="https://www.prnewswire.com/news-releases/2026-cpo-insights-report-predicts-product-managers-will-disappear-by-2030-302782732.html" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -277,7 +282,7 @@
           <h4>O que 638 profissionais revelam sobre a transformação do PM pela IA</h4>
           <div class="meta">Medium — David Haberlah · mar 2026</div>
           <p>Análise baseada em uma pesquisa com 638 profissionais de produto sobre como a IA está mudando rotina, habilidades exigidas e expectativas em torno do cargo — complementa o debate levantado pelo CPO Insights Report.</p>
-          <div class="qive-impact"><strong>Impacto na Qive:</strong> Mais um dado sobre como a IA está mudando as competências esperadas de um PM — útil para autoavaliação e para conversas de carreira/desenvolvimento no time.</div>
+          <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Mais um dado sobre como a IA muda as competências esperadas de um PM — útil para autoavaliação e carreira no time.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Pode ser citado em conteúdo sobre a transformação do papel do PM.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Relevância direta baixa.</div></div>
           <a class="src" href="https://medium.com/@haberlah/what-638-practitioner-voices-reveal-about-pms-ai-transformation-7d2fd16be10d" target="_blank" rel="noopener">Ler fonte original ↗</a>
         </div>
 
@@ -357,7 +362,7 @@
             <h4>Receita Federal publica sua Política de Inteligência Artificial (Portaria RFB nº 647/2026)</h4>
             <div class="meta">gov.br/receitafederal (release oficial) · 5 fev 2026</div>
             <p>A portaria define princípios, diretrizes e salvaguardas para uso de IA em fiscalização, arrecadação, análise de dados, atendimento ao contribuinte e gestão de risco — deixando explícito que a decisão administrativa final é sempre do servidor, e que dados fiscais de contribuintes não podem treinar modelos comerciais de terceiros.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Entender como a Receita vai aplicar IA na fiscalização ajuda a antecipar que tipo de inconsistência vai gerar dor de cabeça nos clientes da Qive — e onde o produto pode alertar antes que a Receita aponte.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Ajuda a antecipar que tipo de inconsistência vai gerar dor de cabeça nos clientes — e onde o produto pode alertar antes da Receita.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Gancho forte de conteúdo educativo ("o que a Política de IA da Receita significa para sua empresa") reforçando a Qive como fonte confiável sobre o tema.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Argumento de urgência para diagnóstico: "a Receita já usa IA para fiscalizar — seus documentos estão em ordem?"</div></div>
           <a class="src" href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/fevereiro/receita-federal-publica-politica-de-inteligencia-artificial-com-foco-em-responsabilidade-transparencia-e-supervisao-humana" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -366,7 +371,7 @@
             <h4>Receita Federal lança o BotRTC, chatbot com IA generativa sobre a Reforma Tributária</h4>
             <div class="meta">gov.br/receitafederal (release oficial) · 6 fev 2026</div>
             <p>Assistente virtual dentro do Portal da Reforma Tributária, treinado com conteúdo institucional, para esclarecer dúvidas gerais sobre o novo modelo de consumo. A própria Receita ressalva: não acessa dados sigilosos do contribuinte, não orienta casos concretos e pode apresentar imprecisões por ser IA.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Referência de como a Receita comunica a Reforma ao contribuinte — pode inspirar como a Qive orienta os próprios clientes sobre dúvidas de IBS/CBS dentro do produto ou na central de ajuda.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Referência de como a Receita comunica a Reforma — pode inspirar como a Qive orienta clientes dentro do produto/central de ajuda.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Gancho para comparar a orientação oficial (limitada, sem acesso a dados do contribuinte) com o suporte mais completo que a Qive oferece.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Mostra que até a Receita reconhece a complexidade do tema — reforça a necessidade de um parceiro especializado.</div></div>
           <a class="src" href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/fevereiro/receita-federal-lanca-chatbot-com-ia-generativa-sobre-a-reforma-tributaria-para-o-publico-externo" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -375,7 +380,7 @@
             <h4>Receita Federal amplia fiscalização com IA e acelera o cruzamento de dados fiscais</h4>
             <div class="meta">Cointelegraph Brasil · 7 jul 2026</div>
             <p>Apoiada pela nova Política de IA, a Receita passou a cruzar milhões de registros em segundos, identificando automaticamente divergências entre o que o contribuinte declara e o que bancos, cartórios, instituições financeiras e emissores de nota fiscal informam — com supervisão humana mantida sobre qualquer autuação.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Item de alta relevância direta: quanto mais a Receita cruza dados fiscais com IA, mais valioso é um produto que garante consistência entre nota fiscal e financeiro antes da fiscalização chegar lá — isso é o core da Qive.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Item de alta relevância direta: quanto mais a Receita cruza dados fiscais com IA, mais valioso é um produto que garante consistência entre nota fiscal e financeiro antes da fiscalização chegar lá.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Manchete forte para campanha/conteúdo sobre risco fiscal — "a Receita nunca fiscalizou tão rápido, sua empresa está pronta?"</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Ótimo gatilho de urgência para prospecção e para reforçar valor em renovação — cruzamento automático eleva o custo de erro manual.</div></div>
           <a class="src" href="https://cointelegraph.com.br/news/irs-expands-oversight-using-artificial-intelligence" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -391,7 +396,7 @@
             <h4>Receita Federal e Comitê Gestor do IBS publicam documentação técnica da Plataforma Pública do Split Payment</h4>
             <div class="meta">gov.br/fazenda (release oficial) · Ato Conjunto RFB/CGIBS nº 2, 3 jun 2026</div>
             <p>Manual de integração e especificação Swagger da plataforma que vai segregar e recolher IBS/CBS no momento da liquidação financeira — a base técnica sobre a qual ERPs, adquirentes e fintechs terão que construir (e, cada vez mais, automatizar com IA) suas integrações de split payment.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> A especificação técnica que a própria Qive (e os ERPs que ela integra, como SAP e TOTVS) vai precisar seguir para o split payment. Vale garantir que engenharia/produto estejam acompanhando de perto essa documentação.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Especificação técnica que a própria Qive (e ERPs parceiros como SAP/TOTVS) vai precisar seguir para o split payment — acompanhar de perto é prioridade de engenharia/produto.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Demanda alta por conteúdo técnico/educativo sobre split payment agora — boa janela para a Qive se posicionar como referência no tema.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Bom gancho para conversas com clientes SAP/TOTVS sobre como vão se conectar à nova plataforma — reforça o papel de intermediador da Qive.</div></div>
           <a class="src" href="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/junho/receita-federal-e-comite-gestor-do-ibs-publicam-documentacao-tecnica-da-plataforma-publica-do-split-payment" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -400,7 +405,7 @@
             <h4>TOTVS amplia a "Inteligência Tributária (TIT)" para simular cenários de CBS, IBS e Imposto Seletivo</h4>
             <div class="meta">TOTVS (blog/Espaço Legislação) · 2026</div>
             <p>Ferramenta compara a carga tributária atual com a projeção pós-Reforma e simula cenários da transição 2026/2027 dentro do Protheus — um dos exemplos mais diretos de ERP nacional incorporando IA especificamente para o "de-para" fiscal exigido pela Reforma.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> TOTVS é parceiro de integração da Qive — vale mapear se o TIT é complementar (dado que a Qive alimenta o Protheus com documentos validados) ou se cria sobreposição em algum ponto da jornada fiscal.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>TOTVS é parceiro de integração — vale mapear se o TIT é complementar (a Qive alimenta o Protheus com documentos validados) ou se cria sobreposição em algum ponto da jornada.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Vale entender como a TOTVS está posicionando essa ferramenta para não gerar confusão de mensagem com clientes que usam as duas soluções.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Pode gerar a pergunta "a Qive faz o mesmo que o TIT da TOTVS?" — vale preparar um comparativo claro para o time.</div></div>
           <a class="src" href="https://espacolegislacao.totvs.com/protheus-reforma-tributaria/" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -409,7 +414,7 @@
             <h4>Startup V360 lança a "IA da Reforma", assistente gratuito para profissionais fiscais e contábeis</h4>
             <div class="meta">Exame · jul 2025</div>
             <p>Ferramenta em formato de chat, treinada com perguntas reais de analistas e coordenadores fiscais, para ajudar a entender os impactos práticos da Reforma. Um dos primeiros produtos de IA brasileiros construídos especificamente em torno do tema — item mais antigo deste radar, mantido pelo valor histórico.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Concorrente/adjacente no espaço de orientação sobre a Reforma para profissionais fiscais — vale observar posicionamento e se algum cliente da Qive já usa como complemento.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Concorrente/adjacente no espaço de orientação sobre a Reforma para profissionais fiscais — vale observar posicionamento.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Concorrente direto de atenção em conteúdo educativo sobre a Reforma — vale monitorar tom, formato e distribuição.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Pode surgir na cabeça do prospect como alternativa gratuita — vale ter argumento claro de diferenciação (dados reais de documentos vs. chatbot de dúvidas gerais).</div></div>
           <a class="src" href="https://exame.com/inteligencia-artificial/ia-brasileira-quer-ajudar-empresas-na-adaptacao-a-reforma-tributaria-que-comeca-em-2026/" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -425,7 +430,7 @@
             <h4>Como preparar o compliance fiscal para IBS e CBS com apoio de IA</h4>
             <div class="meta">O Agente Financeiro · 2026</div>
             <p>Mapeia o desafio do "de-para" — converter, produto a produto e operação a operação, cada regra de PIS/Cofins e ICMS para a nova estrutura de IBS/CBS — e cita pesquisa da EY segundo a qual 45% das empresas já integram IA em alguma iniciativa, mas 68% dos executivos brasileiros admitem lacunas críticas de governança sobre como confiar na tecnologia.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> A lacuna de governança de IA citada aqui é um argumento a favor de posicionar o produto da Qive como a camada que dá rastreabilidade (documento, data, origem) por trás de qualquer automação fiscal.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>A lacuna de governança de IA citada aqui é argumento a favor de posicionar o produto como a camada de rastreabilidade por trás de qualquer automação fiscal.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>A estatística (68% com lacunas de governança) é gancho forte para conteúdo sobre confiança e auditabilidade em IA fiscal.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Bom dado para embasar por que "IA sem rastreabilidade" é risco — reforça o posicionamento de confiabilidade da Qive numa objeção comum.</div></div>
           <a class="src" href="https://www.oagentefinanceiro.com.br/reforma-tributaria-ia-compliance-fiscal-ibs-cbs/" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -441,7 +446,7 @@
             <h4>Reforma tributária e a era da IA: os riscos da fiscalização algorítmica</h4>
             <div class="meta">Migalhas · 16 set 2025</div>
             <p>Artigo jurídico (Karina de Oliveira) mostra a Receita já usando plataformas de IA para detectar fraudes tributárias e aduaneiras, mas alerta que autuações baseadas em algoritmo podem colidir com devido processo, contraditório e ampla defesa — defendendo transparência algorítmica e revisão humana como salvaguardas.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Risco jurídico relevante para clientes da Qive: se a fiscalização por IA pode ser contestada por falta de transparência, manter histórico e auditoria completos de documentos (o que a plataforma já faz) vira argumento de defesa mais forte.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Reforça o valor de manter histórico e auditoria completos de documentos como argumento de defesa para os clientes.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Tema jurídico sério — bom para conteúdo em parceria com especialistas tributários, reforçando autoridade no assunto.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Pode tranquilizar prospects preocupados com autuações injustas: "documentos rastreáveis são sua defesa".</div></div>
           <a class="src" href="https://www.migalhas.com.br/depeso/440070/reforma-tributaria-e-ia-riscos-da-fiscalizacao-algoritmica" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
@@ -450,7 +455,7 @@
             <h4>IA na Reforma Tributária exige fontes oficiais e validação das informações</h4>
             <div class="meta">Portal UAI / Estado de Minas (via Dino) · 29 jun 2026</div>
             <p>Especialista defende que respostas de IA sobre temas fiscais só têm valor se rastreáveis a fonte oficial, data, URL e trecho citado — cita ainda pesquisa global da McKinsey em que 88% das organizações já relatam uso regular de IA em ao menos uma função de negócio, mas muitas ainda em fase de piloto.</p>
-            <div class="qive-impact"><strong>Impacto na Qive:</strong> Reforça a mesma lógica do produto: uma resposta sobre a Reforma só vale algo se for rastreável até a fonte oficial — vale considerar isso se algum dia a Qive incorporar IA generativa em conteúdo de orientação fiscal para clientes.</div>
+            <div class="qive-impact"><div class="qive-impact-title">Impacto na Qive</div><div class="qive-row"><span class="qive-tag qive-tag-produto">Produto</span>Reforça a mesma lógica do produto — uma resposta só vale se for rastreável até a fonte oficial; relevante se a Qive um dia incorporar IA generativa em orientação fiscal.</div><div class="qive-row"><span class="qive-tag qive-tag-marketing">Marketing</span>Bom ângulo de conteúdo sobre "cuidado com IA sem fonte" em temas fiscais — posiciona a Qive como criteriosa e responsável.</div><div class="qive-row"><span class="qive-tag qive-tag-vendas">Vendas</span>Reforça o discurso de confiabilidade de dados vs. respostas genéricas de IA sem rastreabilidade.</div></div>
           <a class="src" href="https://www.uai.com.br/app/noticia/mundo-corporativo/2026/06/29/noticia-mundo-corporativo,385859/ia-na-reforma-tributaria-exige-fontes-oficiais.shtml" target="_blank" rel="noopener">Ler fonte original ↗</a>
           </div>
 
