@@ -70,6 +70,23 @@
   .card a.src:hover{text-decoration:underline;}
   footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12.5px;}
   footer a{color:var(--muted);}
+  .primer{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 26px 30px;margin-bottom:40px;}
+  .primer h2{font-size:22px;margin:0 0 10px;font-weight:700;}
+  .primer-lead{color:#c4c8d4;font-size:14px;max-width:840px;margin:0 0 18px;line-height:1.55;}
+  .primer-intro{color:#c4c8d4;font-size:14.5px;max-width:860px;margin:0 0 26px;line-height:1.6;}
+  .primer-subhead{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#ffcf5c;font-weight:700;margin:0 0 14px;}
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px;}
+  @media (max-width:900px){.timeline{grid-template-columns:1fr;}}
+  .timeline-step{background:var(--panel2);border:1px solid var(--line);border-top:3px solid #ffcf5c;border-radius:12px;padding:14px 16px;}
+  .timeline-step .year{font-size:13.5px;font-weight:700;color:var(--text);display:block;margin-bottom:6px;}
+  .timeline-step p{margin:0;font-size:12.8px;color:#c4c8d4;line-height:1.5;}
+  .primer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:18px;}
+  .primer-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;}
+  .primer-card .primer-num{font-size:11px;font-weight:700;color:#ffcf5c;display:block;margin-bottom:6px;letter-spacing:.03em;}
+  .primer-card h4{margin:0 0 6px;font-size:14px;font-weight:700;line-height:1.3;}
+  .primer-card p{margin:0;font-size:12.8px;color:#c4c8d4;line-height:1.5;}
+  .primer-sources{font-size:12px;color:var(--muted);margin-top:6px;}
+  .primer-sources a{color:var(--muted);}
 </style>
 </head>
 <body>
@@ -88,6 +105,70 @@
       <span class="legend-item"><span class="dot" style="background:var(--r4)"></span>Riscos &amp; Análise Jurídica</span>
     </div>
   </header>
+
+  <section class="primer">
+    <div class="kicker">Por onde começar</div>
+    <h2>A Reforma Tributária em linguagem simples</h2>
+    <p class="primer-lead">Esta seção não muda toda semana como o resto do radar — é um resumo fixo para quem não é da área fiscal ou contábil e quer entender o básico antes de ler as notícias mais técnicas abaixo. Se este é seu primeiro contato com o tema, comece por aqui.</p>
+
+    <p class="primer-intro">O Brasil está trocando 5 impostos que incidem sobre o que compramos e vendemos — PIS, Cofins e IPI (federais), ICMS (estadual) e ISS (municipal) — por um sistema mais simples: dois impostos principais, a CBS (federal) e o IBS (dos estados e municípios), mais um terceiro específico para produtos como cigarro e bebida alcoólica, o Imposto Seletivo. A mudança também altera <em>onde</em> o imposto é cobrado: hoje isso varia de produto para produto e de estado para estado; no modelo novo, o imposto passa a ser cobrado no lugar onde o produto ou serviço é consumido, não onde foi fabricado ou prestado.</p>
+
+    <p class="primer-subhead">O calendário, resumido</p>
+    <div class="timeline">
+      <div class="timeline-step">
+        <span class="year">2026 — Ano de teste</span>
+        <p>As notas fiscais já mostram CBS e IBS, mas com alíquotas simbólicas (0,9% + 0,1%). É para testar os sistemas, não para cobrar de verdade — o efeito no seu bolso, na teoria, é praticamente zero.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="year">2027 — CBS entra de vez</span>
+        <p>A CBS passa a valer com alíquota definitiva, substituindo PIS e Cofins. Entra também o Imposto Seletivo, sobre produtos que fazem mal à saúde ou ao meio ambiente.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="year">2029–2032 — Vez do IBS</span>
+        <p>O IBS vai substituindo ICMS e ISS pouco a pouco — cerca de 10% por ano — enquanto os impostos antigos vão sendo reduzidos na mesma proporção.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="year">2033 — Sistema completo</span>
+        <p>PIS, Cofins, ICMS, ISS e IPI deixam de existir de vez. Sobram só CBS, IBS e Imposto Seletivo.</p>
+      </div>
+    </div>
+
+    <p class="primer-subhead">6 pontos para entender o resto</p>
+    <div class="primer-grid">
+      <div class="primer-card">
+        <span class="primer-num">01</span>
+        <h4>5 impostos virando 2 (+1)</h4>
+        <p>PIS, Cofins e IPI somem e dão lugar à CBS. ICMS e ISS somem e dão lugar ao IBS. Um terceiro imposto, o Seletivo, entra só para itens como cigarro e bebida alcoólica.</p>
+      </div>
+      <div class="primer-card">
+        <span class="primer-num">02</span>
+        <h4>Você paga onde consome</h4>
+        <p>Hoje boa parte do imposto fica com o estado onde o produto foi fabricado. No modelo novo, ele vai para onde o produto ou serviço foi efetivamente consumido — o que redistribui receita entre regiões do país.</p>
+      </div>
+      <div class="primer-card">
+        <span class="primer-num">03</span>
+        <h4>Split payment: o imposto sai na hora</h4>
+        <p>É o mecanismo que separa automaticamente, no momento do pagamento, a parte que é imposto da parte que fica com quem vendeu. Para você, consumidor, nada muda na hora de pagar; para as empresas, muda bastante o fluxo de caixa.</p>
+      </div>
+      <div class="primer-card">
+        <span class="primer-num">04</span>
+        <h4>Cashback para quem ganha menos</h4>
+        <p>Famílias inscritas no CadÚnico com renda de até meio salário mínimo por pessoa recebem de volta parte do imposto pago — uma forma de compensar quem sente mais o peso do imposto sobre consumo.</p>
+      </div>
+      <div class="primer-card">
+        <span class="primer-num">05</span>
+        <h4>Cesta básica sem imposto</h4>
+        <p>Itens da cesta básica nacional (arroz, feijão, leite, entre outros) terão alíquota zero nos novos impostos — a ideia é não pesar no preço do que é essencial.</p>
+      </div>
+      <div class="primer-card">
+        <span class="primer-num">06</span>
+        <h4>Ninguém devia pagar mais imposto (depende do setor)</h4>
+        <p>A meta oficial é manter a carga tributária total do país igual — não é para arrecadar mais, é para simplificar como se arrecada. Na prática, setores que hoje pagam pouco (boa parte dos serviços) tendem a sentir aumento, e setores que hoje pagam muito (parte da indústria) tendem a sentir alívio.</p>
+      </div>
+    </div>
+
+    <p class="primer-sources">Para ir além: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm" target="_blank" rel="noopener">Emenda Constitucional 132/2023</a>, <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm" target="_blank" rel="noopener">Lei Complementar 214/2025</a> e o <a href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo" target="_blank" rel="noopener">Portal da Reforma Tributária</a> (Receita Federal).</p>
+  </section>
 
   <div class="layout">
     <div class="radar-card">
